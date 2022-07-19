@@ -7,9 +7,9 @@ namespace ToDoList.Models
     public string Description { get; set; }
     private static List<Item> _instances = new List<Item> {};
 
-    public Item(string userInputtedDescription)
+    public Item (string description)
     {
-      Description = userInputtedDescription;
+      Description = description;
       _instances.Add(this);
     }
 
@@ -22,5 +22,6 @@ namespace ToDoList.Models
     {
       _instances.Clear();
     }
+
   }
 }
