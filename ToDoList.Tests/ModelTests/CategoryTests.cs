@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ToDoList.Models;
+using System.Collections.Generic;
+using System;
 
 namespace ToDoList.Tests
 {
@@ -88,30 +88,10 @@ namespace ToDoList.Tests
       //Arrange
       string description = "Walk the dog.";
       Item newItem = new Item(description);
-
-      // newItem {
-      //   Description: "Walk the dog."
-      //   Id: 1
-      // }
-
       List<Item> newList = new List<Item> { newItem };
-
       string name = "Work";
       Category newCategory = new Category(name);
-
-      // newCategory {
-      //   Name: "Work"
-      //   Id: 1
-      //   Items: {}
-      // }
-
       newCategory.AddItem(newItem);
-
-      // newCategory {
-      //   Name: "Work"
-      //   Id: 1
-      //   Items: { newItem }
-      // }
 
       //Act
       List<Item> result = newCategory.Items;
@@ -119,5 +99,6 @@ namespace ToDoList.Tests
       //Assert
       CollectionAssert.AreEqual(newList, result);
     }
+    
   }
 }
