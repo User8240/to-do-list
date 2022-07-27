@@ -7,72 +7,72 @@ namespace ToDoList.Controllers
 {
   public class CategoriesController : Controller
   {
-    [HttpGet("/categories")]
-    public ActionResult Index()
-    {
-      List<Category> allCategories = Category.GetAll();
-      return View(allCategories);
-    }
+    // [HttpGet("/categories")]
+    // public ActionResult Index()
+    // {
+    //   List<Category> allCategories = Category.GetAll();
+    //   return View(allCategories);
+    // }
 
-    [HttpGet("/categories/new")]
-    public ActionResult New()
-    {
-      return View();
-    }
+    // [HttpGet("/categories/new")]
+    // public ActionResult New()
+    // {
+    //   return View();
+    // }
 
-    [HttpPost("/categories")]
-    public ActionResult Create(string categoryName)
-    {
-      Category newCategory = new Category(categoryName);
-      return RedirectToAction("Index");
-    }
+    // [HttpPost("/categories")]
+    // public ActionResult Create(string categoryName)
+    // {
+    //   Category newCategory = new Category(categoryName);
+    //   return RedirectToAction("Index");
+    // }
 
-    [HttpGet("/categories/{id}")]
-    public ActionResult Show(int id)
-    {
+    // [HttpGet("/categories/{id}")]
+    // public ActionResult Show(int id)
+    // {
 
-      // (pretend this category exists) Category newCategory = new Category("Work");
+    //   // (pretend this category exists) Category newCategory = new Category("Work");
 
-      Dictionary<string, object> model = new Dictionary<string, object>();
+    //   Dictionary<string, object> model = new Dictionary<string, object>();
 
-      // model = { }
+    //   // model = { }
 
-      Category selectedCategory = Category.Find(id);
+    //   Category selectedCategory = Category.Find(id);
 
-      // selectedCategory (if id was 1) = 
-      // newCategory {
-      //   Name: "Work"
-      //   Id: 1
-      //   Items: { newItem }
-      // } 
+    //   // selectedCategory (if id was 1) = 
+    //   // newCategory {
+    //   //   Name: "Work"
+    //   //   Id: 1
+    //   //   Items: { newItem }
+    //   // } 
 
-      List<Item> categoryItems = selectedCategory.Items;
+    //   List<Item> categoryItems = selectedCategory.Items;
 
-      //categoryItems = { newItem }
+    //   //categoryItems = { newItem }
 
-      model.Add("category", selectedCategory);
+    //   model.Add("category", selectedCategory);
 
-      // model { {"category", newCategory} }
+    //   // model { {"category", newCategory} }
 
-      model.Add("items", categoryItems);
+    //   model.Add("items", categoryItems);
 
-      // model { {"category", newCategory}, {"items", categoryItems} }
+    //   // model { {"category", newCategory}, {"items", categoryItems} }
 
-      return View(model);
-    }
+    //   return View(model);
+    // }
 
-    [HttpPost("/categories/{categoryId}/items")]
-    public ActionResult Create(int categoryId, string itemDescription)
-    {
-      Dictionary<string, object> model = new Dictionary<string, object>();
-      Category foundCategory = Category.Find(categoryId);
-      Item newItem = new Item(itemDescription);
-      newItem.Save();    // New code
-      foundCategory.AddItem(newItem);
-      List<Item> categoryItems = foundCategory.Items;
-      model.Add("items", categoryItems);
-      model.Add("category", foundCategory);
-      return View("Show", model);
-    }
+    // [HttpPost("/categories/{categoryId}/items")]
+    // public ActionResult Create(int categoryId, string itemDescription)
+    // {
+    //   Dictionary<string, object> model = new Dictionary<string, object>();
+    //   Category foundCategory = Category.Find(categoryId);
+    //   Item newItem = new Item(itemDescription);
+    //   newItem.Save();    // New code
+    //   foundCategory.AddItem(newItem);
+    //   List<Item> categoryItems = foundCategory.Items;
+    //   model.Add("items", categoryItems);
+    //   model.Add("category", foundCategory);
+    //   return View("Show", model);
+    // }
   }
 } 
