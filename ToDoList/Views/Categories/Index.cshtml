@@ -3,14 +3,14 @@
 }
 
 @using ToDoList.Models;
-@model List<ToDoList.Models.Item>;
+@model List<ToDoList.Models.Category>;
 
-<h1>Items</h1>
+<h1>Categories</h1>
 
 <ul>
-  @foreach(Item item in Model)
+  @foreach(Category category in Model)
   {
-    <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId })</li>
+    <li>@Html.ActionLink($"{category.Name}", "Details", new { id = category.CategoryId })</li>
   }
 </ul>
 
